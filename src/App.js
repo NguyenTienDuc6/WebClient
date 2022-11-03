@@ -1,37 +1,34 @@
-import {
+
+
+/*import {
   BrowserRouter as Router,
-  Routes,
   Route,
-  Link
-} from 'react-router-dom';
-import Home from './page/home';
-import Product from './page/product';
-import Profile from './page/profile';
+  Routes
+}  from "react-router-dom"
+import MyComponent from "./MyComponent";
 function App() {
   return (
-    <div>
-      <Router>
-        <nav>
-          <li>
-          <Link to={'/'}>home</Link>
-          </li>
-
-          <li>
-          <Link to={'/product'}>product</Link>
-          </li>
-          <li>
-          <Link to={'/profile'}>profile</Link>
-          </li>
-          
-        </nav>
-        <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/product' element={<Product/>}/>
-          <Route path='/profile' element={<Profile/>}/>
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MyComponent/>}/>
+      </Routes>
+    </Router>
   );
+}
+
+export default App;*/
+
+import * as React from "react"
+
+function App() {
+  const [MyComponent, setMyComponent]= React.useState (()=>null);
+
+  React.useEffect(()=>{
+    import("./MyComponent").then((module)=>{
+      setMyComponent(()=>module.default);
+    })
+  },[]);
+  return <MyComponent/>
 }
 
 export default App;
